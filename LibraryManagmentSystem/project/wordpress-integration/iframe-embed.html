@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library TRRS - Embed Code</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .code-block {
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        .method {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            background: #fafafa;
+        }
+        .method h3 {
+            color: #2c5aa0;
+            margin-top: 0;
+        }
+        .pros {
+            color: #28a745;
+        }
+        .cons {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <h1>WordPress Integration Guide for Library TRRS</h1>
+    
+    <div class="method">
+        <h3>Method 1: Full Page iFrame Embed (Recommended)</h3>
+        <p><strong class="pros">✅ Pros:</strong> Easy to implement, responsive, maintains all functionality</p>
+        <p><strong class="cons">❌ Cons:</strong> Shows in iframe, may have slight loading delay</p>
+        
+        <h4>Step 1: Add this shortcode to your WordPress functions.php:</h4>
+        <div class="code-block">
+// Add to your theme's functions.php file
+function library_trrs_shortcode($atts) {
+    $atts = shortcode_atts(array(
+        'height' => '800px',
+        'width' => '100%'
+    ), $atts);
+    
+    return '&lt;div style="width: ' . esc_attr($atts['width']) . '; height: ' . esc_attr($atts['height']) . '; border: none; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"&gt;
+        &lt;iframe src="https://soft-choux-f67865.netlify.app" 
+                width="100%" 
+                height="100%" 
+                frameborder="0" 
+                style="border-radius: 8px;"
+                title="Library TRRS Management System"&gt;
+        &lt;/iframe&gt;
+    &lt;/div&gt;';
+}
+add_shortcode('library_trrs', 'library_trrs_shortcode');
+        </div>
+        
+        <h4>Step 2: Use this shortcode in any WordPress page/post:</h4>
+        <div class="code-block">
+[library_trrs]
+
+// Or with custom dimensions:
+[library_trrs height="600px" width="100%"]
+        </div>
+    </div>
+
+    <div class="method">
+        <h3>Method 2: WordPress Plugin Approach</h3>
+        <p><strong class="pros">✅ Pros:</strong> More professional, easier management, can add admin settings</p>
+        <p><strong class="cons">❌ Cons:</strong> Requires creating a plugin file</p>
+        
+        <h4>Create a new file: wp-content/plugins/library-trrs/library-trrs.php</h4>
+        <p><em>(Plugin file will be created separately)</em></p>
+    </div>
+
+    <div class="method">
+        <h3>Method 3: Direct HTML Embed</h3>
+        <p><strong class="pros">✅ Pros:</strong> Quick and simple</p>
+        <p><strong class="cons">❌ Cons:</strong> Less flexible, harder to maintain</p>
+        
+        <h4>Add this HTML directly to your WordPress page/post (in HTML mode):</h4>
+        <div class="code-block">
+&lt;div style="width: 100%; height: 800px; border: none; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin: 20px 0;"&gt;
+    &lt;iframe src="https://soft-choux-f67865.netlify.app" 
+            width="100%" 
+            height="100%" 
+            frameborder="0" 
+            style="border-radius: 8px;"
+            title="Library TRRS Management System"&gt;
+        &lt;p&gt;Your browser does not support iframes. &lt;a href="https://soft-choux-f67865.netlify.app" target="_blank"&gt;Click here to access Library TRRS&lt;/a&gt;&lt;/p&gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+        </div>
+    </div>
+
+    <div class="method">
+        <h3>Method 4: Custom WordPress Page Template</h3>
+        <p><strong class="pros">✅ Pros:</strong> Full control, can remove WordPress header/footer for seamless experience</p>
+        <p><strong class="cons">❌ Cons:</strong> Requires theme modification</p>
+        
+        <h4>Create a custom page template in your theme folder:</h4>
+        <p><em>(Template file will be created separately)</em></p>
+    </div>
+
+    <h2>Additional Considerations:</h2>
+    <ul>
+        <li><strong>Mobile Responsiveness:</strong> The iframe will automatically adjust to mobile screens</li>
+        <li><strong>Security:</strong> Your app is hosted on Netlify with HTTPS, so it's secure</li>
+        <li><strong>Performance:</strong> The app loads independently, so it won't slow down your WordPress site</li>
+        <li><strong>Updates:</strong> When you update your app on Netlify, changes will automatically appear in WordPress</li>
+    </ul>
+
+    <h2>Recommended Implementation:</h2>
+    <p>I recommend using <strong>Method 1 (Shortcode)</strong> as it's the easiest to implement and maintain. Simply:</p>
+    <ol>
+        <li>Add the shortcode function to your theme's functions.php</li>
+        <li>Create a new WordPress page called "Library Management"</li>
+        <li>Add the shortcode [library_trrs] to that page</li>
+        <li>Publish the page</li>
+    </ol>
+</body>
+</html>
